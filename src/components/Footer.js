@@ -27,8 +27,10 @@ const StyledWrapper = styled(motion.div)`
       padding: 1.1rem 0;
     }
     @media (max-width: 600px) {
-      flex-direction: column;
-      gap: 0.5rem;
+      flex-direction: row;
+      gap: 1.2rem;
+      justify-content: center;
+      align-items: center;
       padding: 0.7rem 0;
     }
   }
@@ -78,9 +80,10 @@ const StyledWrapper = styled(motion.div)`
     transition: filter 0.3s, transform 0.3s;
   }
   .btn-3:hover svg {
-    filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 24px #a78bfa);
-    transform: scale(1.18) rotate(-15deg);
-    transition: filter 0.3s, transform 0.3s;
+    filter: brightness(1.2) drop-shadow(0 0 16px #a78bfa99);
+    color: #a78bfa;
+    box-shadow: 0 6px 28px 0 #a78bfa33, 0 1.5px 12px 0 #00ff7540;
+    transition: filter 0.45s cubic-bezier(0.22,1,0.36,1), color 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s cubic-bezier(0.22,1,0.36,1);
   }
   .btn-4:hover svg {
     filter: drop-shadow(0 0 12px #4267B2) drop-shadow(0 0 24px #4267B288);

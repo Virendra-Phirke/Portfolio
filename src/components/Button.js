@@ -59,6 +59,16 @@ const StyledWrapper = styled.div`
   .button:active,
   .button:focus {
     outline: none;
+    box-shadow: 0 0 0 2px #a78bfa44, 0 4px 24px 0 #a78bfa33;
+    transform: scale(0.97);
+    transition: all 0.38s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .button:hover {
+    box-shadow: 0 6px 28px 0 #a78bfa33, 0 1.5px 12px 0 #00ff7540;
+    transform: scale(1.045);
+    color: #a78bfa;
+    transition: all 0.38s cubic-bezier(0.22,1,0.36,1);
   }
 
   .button:active::before,

@@ -154,6 +154,15 @@ const AboutMe = ({ visible = true }, ref) => {
 export default React.forwardRef(AboutMe);
 
 const Section = styled(motion.section)`
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.1s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
   width: 100%;
   min-height: 80vh;
   background: linear-gradient(180deg, #2e3440 0%, #1e293b 100%);

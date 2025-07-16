@@ -84,6 +84,15 @@ const fadeIn = keyframes`
 `;
 
 const HeroContainer = styled.section`
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.1s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
   width: 100%;
   min-height: 60vh;
   display: flex;

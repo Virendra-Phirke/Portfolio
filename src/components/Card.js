@@ -61,6 +61,15 @@ const Card = ({
 const StyledWrapper = styled.div`
   .card {
     position: relative;
+    will-change: transform, box-shadow, border-color;
+  }
+
+  .card:hover, .card:focus {
+    box-shadow: 0 14px 48px 0 #a78bfa44, 0 4px 24px 0 #00ff7540;
+    border-color: #a78bfa;
+    transform: scale(1.045);
+    transition: box-shadow 0.5s cubic-bezier(0.22,1,0.36,1), border 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
     width: 260px;
     min-height: 370px;
     background: rgba(24,24,27,0.18);

@@ -76,9 +76,14 @@ const StyledWrapper = styled.div`
     align-items: center;
     padding: 0.5em;
     @media (max-width: 600px) {
-      flex-direction: column;
-      padding: 0.3em 0.2em;
-      gap: 0.2em;
+      flex-direction: row;
+      padding: 0.5em;
+      gap: 0;
+      background: var(--nord0);
+      border-radius: 16px;
+      box-shadow: none;
+      position: absolute;
+      z-index: 1000;
     }
   }
 
@@ -86,12 +91,14 @@ const StyledWrapper = styled.div`
     padding: 0.5em 1.5em;
     color: var(--nord6);
     cursor: pointer;
-    transition: 0.1s;
+    transition: all 0.38s cubic-bezier(0.22,1,0.36,1);
     @media (max-width: 600px) {
-      padding: 0.4em 0.8em;
+      padding: 0.5em 1.5em;
       font-size: 1rem;
-      width: 100%;
-      text-align: left;
+      width: auto;
+      text-align: center;
+      border-radius: 0;
+      margin-bottom: 0;
     }
   }
 

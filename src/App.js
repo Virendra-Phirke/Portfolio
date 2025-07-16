@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
   html, body, #root {
     margin: 0;
     padding: 0;
-    background: var(--nord0);
+    background: linear-gradient(135deg, var(--nord0) 0%, var(--nord1) 100%);
     color: var(--nord6);
     font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
     /* Hide scrollbars but allow scrolling */
@@ -44,6 +44,9 @@ const GlobalStyle = createGlobalStyle`
     -ms-overflow-style: none;  /* IE and Edge */
     overflow-x: hidden;
     scroll-behavior: smooth;
+    transition: background 0.8s cubic-bezier(0.22,1,0.36,1), color 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s cubic-bezier(0.22,1,0.36,1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   html::-webkit-scrollbar, body::-webkit-scrollbar, #root::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */

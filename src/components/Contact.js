@@ -50,9 +50,24 @@ const ContactGrid = styled.div`
     padding: 3.5rem 3rem;
   }
   @media (max-width: 600px) {
-    padding: 1.2rem 0.5rem;
-    gap: 1.2rem;
-    border-radius: 12px;
+    flex-direction: column;
+    padding: 0.6rem 0.2rem;
+    gap: 0.6rem;
+    border-radius: 9px;
+    max-width: 98vw;
+    min-width: 0;
+    .contact-info-col {
+      order: 1;
+      width: 92vw;
+      max-width: 340px;
+      margin: 0 auto 0.5rem auto;
+    }
+    .contact-form-col {
+      order: 2;
+      width: 98vw;
+      max-width: 500px;
+      margin: 0 auto;
+    }
   }
 `;
 
@@ -143,10 +158,10 @@ const Contact = ({ id }) => {
           viewport={{ once: true, amount: 0.5 }}
           style={{ display: 'flex', flexDirection: 'row', gap: '2.5rem', width: '100%', maxWidth: '900px', margin: '0 auto' }}
         >
-          <motion.div variants={infoVariants}>
+          <motion.div className="contact-info-col" variants={infoVariants}>
             <ContactInfo />
           </motion.div>
-          <motion.div variants={formVariants} style={{ flex: 1, minWidth: 0 }}>
+          <motion.div className="contact-form-col" variants={formVariants} style={{ flex: 1, minWidth: 0 }}>
             <div className="form-container">
               <motion.div className="form" initial="hidden" animate="visible" variants={gridVariants}>
                 <motion.span className="heading" variants={fieldVariants} custom={0}>Get in touch</motion.span>

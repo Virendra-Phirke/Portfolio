@@ -52,6 +52,15 @@ const pulseGlow = keyframes`
 `;
 
 const InfoWrapper = styled.div`
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.1s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
@@ -100,8 +109,8 @@ const Label = styled.div`
   color: #fff;
   margin-bottom: 0.2rem;
   @media (max-width: 600px) {
-    font-size: 0.98rem;
-    margin-bottom: 0.12rem;
+    font-size: 0.89rem;
+    margin-bottom: 0.08rem;
   }
 `;
 
