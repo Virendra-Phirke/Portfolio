@@ -215,12 +215,19 @@ const StyledWrapper = styled.div`
     border-left: 5px solid #ff7a01;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
     @media (max-width: 600px) {
-      margin: 10px 0;
-      padding: 14px 6px;
-      border-left: 3px solid #ff7a01;
+      max-width: 99vw;
+      margin: 8px 0 0 0;
+      padding: 7px 2vw;
+      border-radius: 10px;
+      border-left: 2px solid #ff7a01;
       clip-path: none;
     }
   }
+  @media (max-width: 600px) {
+    min-height: 46vh;
+    padding: 1.2rem 0 1.2rem 0;
+  }
+
   .heading {
     display: block;
     color: white;
@@ -228,16 +235,16 @@ const StyledWrapper = styled.div`
     font-weight: 800;
     margin-bottom: 20px;
     @media (max-width: 600px) {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
+      font-size: 1rem;
+      margin-bottom: 7px;
     }
   }
   .form-container .form .input,
   .form-container .form .textarea {
     font-size: 1rem;
     @media (max-width: 600px) {
-      font-size: 0.85rem;
-      padding: 7px;
+      font-size: 0.72rem;
+      padding: 5px;
     }
   }
   .form-container .form .button-container {
@@ -245,7 +252,7 @@ const StyledWrapper = styled.div`
     gap: 10px;
     @media (max-width: 600px) {
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
   }
 

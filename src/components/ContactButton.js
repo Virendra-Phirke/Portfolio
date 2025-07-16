@@ -96,6 +96,15 @@ const StyledWrapper = styled.div`
     transition:
       background 0.3s,
       transform 0.3s;
+    min-width: 88px;
+    max-width: 100vw;
+    min-height: 40px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 1;
+    overflow: hidden;
   }
   ${({ direction }) => direction === 'right' ? css`
     .button.visible {
@@ -146,7 +155,11 @@ const StyledWrapper = styled.div`
   .blob1 {
     position: absolute;
     width: 45px;
-    height: 100%;
+    height: 90%;
+    min-width: 18px;
+    min-height: 24px;
+    max-width: 60px;
+    max-height: 100%;
     border-radius: 12px;
     bottom: 0;
     left: 0;
@@ -160,6 +173,9 @@ const StyledWrapper = styled.div`
     transition:
       background 0.3s,
       box-shadow 0.3s;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
   }
   .button:hover .blob1 {
     box-shadow: -5px 5px 20px #000;
@@ -200,26 +216,35 @@ const StyledWrapper = styled.div`
     .button {
       font-size: 0.92rem;
       padding: 1px;
+      min-width: 72px;
+      min-height: 36px;
     }
     .blob1 {
-      width: 30px;
+      width: 24px;
+      min-width: 12px;
+      max-width: 36px;
     }
     .inner {
-      padding: 7px 12px;
-      font-size: 0.97rem;
+      padding: 7px 10px;
+      font-size: 0.92rem;
     }
   }
   @media (max-width: 600px) {
     .button {
-      font-size: 0.82rem;
+      font-size: 0.79rem;
       padding: 0.5px;
+      min-width: 58px;
+      min-height: 32px;
+      max-width: 95vw;
     }
     .blob1 {
-      width: 20px;
+      width: 14px;
+      min-width: 8px;
+      max-width: 22px;
     }
     .inner {
-      padding: 5px 8px;
-      font-size: 0.89rem;
+      padding: 4px 6px;
+      font-size: 0.83rem;
     }
   }
 `;

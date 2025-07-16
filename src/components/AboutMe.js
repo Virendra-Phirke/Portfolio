@@ -181,6 +181,11 @@ const ContentGrid = styled.div`
   @media (min-width: 900px) {
     grid-template-columns: 1fr 1.2fr;
   }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    padding: 0.2rem 0;
+  }
 `;
 
 const AvatarWrapper = styled.div`
@@ -225,8 +230,9 @@ const AvatarWrapper = styled.div`
     height: 160px;
   }
   @media (max-width: 600px) {
-    width: 110px;
-    height: 110px;
+    width: 74px;
+    height: 74px;
+    margin-bottom: 0.7rem;
   }
 `;
 
@@ -243,9 +249,9 @@ const Avatar = styled.img`
     border-radius: 12px;
   }
   @media (max-width: 600px) {
-    width: 90px;
-    height: 90px;
-    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 9px;
   }
 `;
 
@@ -282,9 +288,15 @@ const RightContent = styled(motion.div)`
     .about-subtitle { font-size: 1.05rem; }
   }
   @media (max-width: 600px) {
-    h2 { font-size: 1.15rem; }
-    .about-intro { font-size: 0.95rem; }
-    .about-subtitle { font-size: 0.95rem; }
+    h2 { font-size: 1rem; margin-bottom: 0.3rem; }
+    .about-intro { font-size: 0.82rem; margin-bottom: 0.7rem; }
+    .about-subtitle { font-size: 0.82rem; margin-bottom: 0.2rem; margin-top: 0.7rem; }
+    .about-actions {
+      flex-direction: column;
+      gap: 0.4em;
+      margin-top: 1.2rem !important;
+      align-items: stretch;
+    }
   }
 `;
 
@@ -322,8 +334,8 @@ const TechBadge = styled(motion.span)`
     padding: 0.3em 0.8em;
   }
   @media (max-width: 600px) {
-    font-size: 0.85rem;
-    padding: 0.2em 0.6em;
+    font-size: 0.7rem;
+    padding: 0.14em 0.4em;
   }
 `;
 

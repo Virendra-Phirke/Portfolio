@@ -306,24 +306,31 @@ const StyledWrapper = styled.div`
   }
   @media (max-width: 600px) {
     .card {
-      width: 99vw;
+      width: 86vw;
+      max-width: 290px;
       min-width: 0;
-      max-width: 100vw;
+      margin: 0.4rem auto;
       padding: 0;
-      min-height: 120px;
+      min-height: 98px;
+      box-sizing: border-box;
     }
     .card-img-wrapper {
-      height: 48px;
+      height: 34px;
     }
     .card-gradient-content {
-      padding: 5px 3px 3px 3px;
-      min-height: 20px;
+      padding: 4px 4px 4px 4px;
+      min-height: 18px;
+    }
+    .card-actions {
+      flex-direction: column;
+      gap: 0.2rem;
+      align-items: stretch;
     }
     .heading {
-      font-size: 0.82rem;
+      font-size: 0.72rem;
     }
     .subtitle {
-      font-size: 0.78rem;
+      font-size: 0.68rem;
     }
   }
 `;

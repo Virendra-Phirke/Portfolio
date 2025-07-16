@@ -63,6 +63,12 @@ const InfoWrapper = styled.div`
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   padding: 2.2rem 2rem;
+  @media (max-width: 600px) {
+    gap: 1.1rem;
+    border-radius: 12px;
+    padding: 1rem 0.5rem;
+    margin: 1.2rem 0 1.2rem 0;
+  }
 `;
 
 const IconCircle = styled.div`
@@ -78,6 +84,14 @@ const IconCircle = styled.div`
   svg {
     transition: transform 0.4s, filter 0.4s;
   }
+  @media (max-width: 600px) {
+    width: 34px;
+    height: 34px;
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
 `;
 
 const Label = styled.div`
@@ -85,11 +99,19 @@ const Label = styled.div`
   font-weight: 700;
   color: #fff;
   margin-bottom: 0.2rem;
+  @media (max-width: 600px) {
+    font-size: 0.98rem;
+    margin-bottom: 0.12rem;
+  }
 `;
 
 const Value = styled.div`
   font-size: 1.05rem;
   color: #e5e9f0;
+  @media (max-width: 600px) {
+    font-size: 0.88rem;
+    word-break: break-word;
+  }
 `;
 
 const InfoItem = styled.div`
@@ -108,6 +130,8 @@ const InfoItem = styled.div`
     z-index: 2;
   }
   &:hover ${IconCircle} {
+    filter: brightness(1.15) drop-shadow(0 0 8px #a78bfa);
+    background: rgba(167,139,250,0.16);
     box-shadow: 0 0 24px 6px #a78bfa88, 0 2px 12px 0 rgba(167,139,250,0.22);
     background: rgba(167,139,250,0.18);
     animation: ${pulseGlow} 1.2s infinite alternate;
