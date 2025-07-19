@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Logo from './Logo';
 
 const Navbar = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavClick = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+    setSidebarOpen(false);
   };
   return (
     <StyledWrapper>
+      {/* Mobile top row: Logo + Hamburger */}
+      <MobileTopRow>
+        <Logo />
+        <Hamburger onClick={() => setSidebarOpen(true)}>
+          <span />
+          <span />
+          <span />
+        </Hamburger>
+      </MobileTopRow>
+      {/* Sidebar for mobile */}
+      <Sidebar open={sidebarOpen}>
+        <SidebarLinks>
+          <div className="btn" onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setSidebarOpen(false); }}>Home</div>
+          <div className="btn" onClick={() => handleNavClick('about')}>About</div>
+          <div className="btn" onClick={() => handleNavClick('projects')}>Project</div>
+          <div className="btn" onClick={() => handleNavClick('contact')}>Contact</div>
+        </SidebarLinks>
+      </Sidebar>
+      {/* Overlay for sidebar */}
+      {sidebarOpen && <SidebarOverlay onClick={() => setSidebarOpen(false)} />}
+      {/* Desktop nav */}
       <div className="nav">
         <div className="container">
           <div className="btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</div>
@@ -25,6 +49,108 @@ const Navbar = () => {
   );
 }
 
+const MobileTopRow = styled.div`
+  display: none;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--nord0, #2e3440);
+    z-index: 2100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+`;
+
+const Hamburger = styled.div`
+  display: none;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: static;
+    z-index: 2001;
+    background: var(--nord0);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    span {
+      width: 24px;
+      height: 3px;
+      background: var(--nord6);
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+  }
+`;
+
+const Sidebar = styled.div`
+  display: none;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 70vw;
+    max-width: 320px;
+    background: rgba(46, 52, 64, 0.55); /* translucent glass effect */
+    box-shadow: 2px 0 16px rgba(0,0,0,0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-right: 1.5px solid rgba(255,255,255,0.13);
+    z-index: 2002;
+    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    padding: 2.5rem 1.2rem 1.2rem 1.2rem;
+    .btn {
+      width: 100%;
+      text-align: left;
+      padding: 1.1rem 0 1.1rem 0.5rem;
+      font-size: 1.2rem;
+      color: var(--nord6);
+      border-radius: 6px;
+      margin-bottom: 0.2rem;
+      background: none;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: var(--nord3, #434c5e);
+      color: #37FF8B;
+    }
+  }
+`;
+
+const SidebarLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+`;
+
+const SidebarOverlay = styled.div`
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.25);
+    z-index: 2000;
+  }
+`;
+
 const StyledWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -34,15 +160,10 @@ const StyledWrapper = styled.div`
     position: absolute;
     inset: 0;
     pointer-events: none;
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
-
-  .rect {
-    stroke-dashoffset: 5;
-    stroke-dasharray: 0 0 10 40 10 40;
-    transition: 0.5s;
-    stroke: #fff;
-  }
-
   .nav {
     position: relative;
     width: 400px;
@@ -52,18 +173,9 @@ const StyledWrapper = styled.div`
       height: auto;
     }
     @media (max-width: 600px) {
-      width: 100vw;
-      height: auto;
+      display: none;
     }
   }
-
-  .container:hover .outline .rect {
-    transition: 999999s;
-    /* Must specify these values here as something *different* just so that the transition works properly */
-    stroke-dashoffset: 1;
-    stroke-dasharray: 0;
-  }
-
   .container {
     position: absolute;
     inset: 0;
@@ -76,66 +188,45 @@ const StyledWrapper = styled.div`
     align-items: center;
     padding: 0.5em;
     @media (max-width: 600px) {
-      flex-direction: row;
-      padding: 0.5em;
-      gap: 0;
-      background: var(--nord0);
-      border-radius: 16px;
-      box-shadow: none;
-      position: absolute;
-      z-index: 1000;
+      display: none;
     }
   }
-
   .btn {
     padding: 0.5em 1.5em;
     color: var(--nord6);
     cursor: pointer;
     transition: all 0.38s cubic-bezier(0.22,1,0.36,1);
-    @media (max-width: 600px) {
-      padding: 0.5em 1.5em;
-      font-size: 1rem;
-      width: auto;
-      text-align: center;
-      border-radius: 0;
-      margin-bottom: 0;
-    }
   }
-
   .btn:hover {
     background: transparent;
     color: #ebcb8b;
   }
-
   .btn:nth-child(1):hover ~ svg .rect {
     stroke-dashoffset: 0;
     stroke-dasharray: 0 2 8 73.3 8 10.7;
     stroke: #37FF8B;
   }
-
   .btn:nth-child(2):hover ~ svg .rect {
     stroke-dashoffset: 0;
     stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
     stroke: #37FF8B;
   }
-
   .btn:nth-child(3):hover ~ svg .rect {
     stroke-dashoffset: 0;
     stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
     stroke: #37FF8B;
   }
-
   .btn:nth-child(4):hover ~ svg .rect {
     stroke-dashoffset: 0;
     stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
     stroke: #37FF8B;
   }
-
   .btn:hover ~ .outline .rect {
     stroke-dashoffset: 0;
     stroke-dasharray: 0 0 10 40 10 40;
     stroke: #37FF8B;
     transition: 0.5s !important;
-  }`;
+  }
+`;
 
 export default Navbar; 

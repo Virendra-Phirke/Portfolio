@@ -144,11 +144,13 @@ const Contact = ({ id }) => {
         style={{ transition: 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)' }}
       >
         <motion.div variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <StylishHeading
-            initial={{ opacity: 0, y: -30, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          >Contact Info</StylishHeading>
+          <div className="contact-info-section">
+            <StylishHeading
+              initial={{ opacity: 0, y: -30, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            >Contact Info</StylishHeading>
+          </div>
         </motion.div>
         <motion.div
           as={ContactGrid}
@@ -161,43 +163,45 @@ const Contact = ({ id }) => {
           <motion.div className="contact-info-col" variants={infoVariants}>
             <ContactInfo />
           </motion.div>
-          <motion.div className="contact-form-col" variants={formVariants} style={{ flex: 1, minWidth: 0 }}>
-            <div className="form-container">
-              <motion.div className="form" initial="hidden" animate="visible" variants={gridVariants}>
-                <motion.span className="heading" variants={fieldVariants} custom={0}>Get in touch</motion.span>
-                <motion.input placeholder="Name" type="text" className="input" name="name" value={form.name} onChange={handleChange} variants={fieldVariants} custom={1} />
-                {errors.name && <div style={{ color: '#ff7a01', fontSize: '0.95em', marginBottom: 8 }}>{errors.name}</div>}
-                <motion.input placeholder="Email" id="mail" type="email" className="input" name="email" value={form.email} onChange={handleChange} variants={fieldVariants} custom={2} />
-                {errors.email && <div style={{ color: '#ff7a01', fontSize: '0.95em', marginBottom: 8 }}>{errors.email}</div>}
-                <motion.textarea placeholder="Say Hello" rows={10} cols={30} id="message" name="message" className="textarea" value={form.message} onChange={handleChange} variants={fieldVariants} custom={3} />
-                {errors.message && <div style={{ color: '#ff7a01', fontSize: '0.95em', marginBottom: 8 }}>{errors.message}</div>}
-                <motion.div className="button-container" style={{ display: 'flex', gap: 10 }}>
-                  <motion.button
-                    type="submit"
-                    className="send-button"
-                    variants={buttonVariants}
-                    initial="rest"
-                    whileHover="hover"
-                    animate="rest"
-                    onClick={handleSubmit}
-                  >Send</motion.button>
-                  <motion.div className="reset-button-container" variants={fieldVariants} custom={5}>
+          <div className="contact-form-section">
+            <motion.div className="contact-form-col" variants={formVariants} style={{ flex: 1, minWidth: 0 }}>
+              <div className="form-container">
+                <motion.div className="form" initial="hidden" animate="visible" variants={gridVariants}>
+                  <motion.span className="heading" variants={fieldVariants} custom={0}>Get in touch</motion.span>
+                  <motion.input placeholder="Name" type="text" className="input" name="name" value={form.name} onChange={handleChange} variants={fieldVariants} custom={1} />
+                  {errors.name && <div style={{ color: '#ff7a01', fontSize: '0.95em', marginBottom: 8 }}>{errors.name}</div>}
+                  <motion.input placeholder="Email" id="mail" type="email" className="input" name="email" value={form.email} onChange={handleChange} variants={fieldVariants} custom={2} />
+                  {errors.email && <div style={{ color: '#ff7a01', fontSize: '0.95em', marginBottom: 8 }}>{errors.email}</div>}
+                  <motion.textarea placeholder="Say Hello" rows={10} cols={30} id="message" name="message" className="textarea" value={form.message} onChange={handleChange} variants={fieldVariants} custom={3} />
+                  {errors.message && <div style={{ color: '#ff7a01', fontSize: '0.95em', marginBottom: 8 }}>{errors.message}</div>}
+                  <motion.div className="button-container" style={{ display: 'flex', gap: 10 }}>
                     <motion.button
-                      type="button"
-                      id="reset-btn"
-                      className="reset-button"
+                      type="submit"
+                      className="send-button"
                       variants={buttonVariants}
                       initial="rest"
                       whileHover="hover"
                       animate="rest"
-                      onClick={handleReset}
-                    >Reset</motion.button>
+                      onClick={handleSubmit}
+                    >Send</motion.button>
+                    <motion.div className="reset-button-container" variants={fieldVariants} custom={5}>
+                      <motion.button
+                        type="button"
+                        id="reset-btn"
+                        className="reset-button"
+                        variants={buttonVariants}
+                        initial="rest"
+                        whileHover="hover"
+                        animate="rest"
+                        onClick={handleReset}
+                      >Reset</motion.button>
+                    </motion.div>
                   </motion.div>
+                  {submitted && <div style={{ color: '#a3be8c', fontWeight: 600, marginTop: 10 }}>Thank you! Your message has been sent.</div>}
                 </motion.div>
-                {submitted && <div style={{ color: '#a3be8c', fontWeight: 600, marginTop: 10 }}>Thank you! Your message has been sent.</div>}
-              </motion.div>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
       </motion.section>
     </StyledWrapper>

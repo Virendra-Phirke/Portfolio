@@ -110,6 +110,7 @@ const HeroContainer = styled.section`
   @media (max-width: 600px) {
     padding: 1.2rem 0.2rem 1rem 0.2rem;
     min-height: 40vh;
+    margin-top: 4.5rem;
   }
 `;
 

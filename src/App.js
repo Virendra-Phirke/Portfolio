@@ -56,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   const [heroVisible, setHeroVisible] = useState(true);
   const aboutRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,6 +75,12 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -122,6 +129,7 @@ function App() {
             key="projects"
             as={ProjectsSection}
             id="projects"
+            className="project-section"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
@@ -219,6 +227,75 @@ function App() {
             </motion.div>
           </motion.section>
         </AnimatePresence>
+        {/* Mobile projects grid (only visible on mobile) */}
+        {isMobile && (
+          <>
+            <div className="mobile-projects-grid-container">
+              <h2 className="mobile-projects-title">Projects</h2>
+              <div className="mobile-projects-grid">
+                <div
+                  className="mobile-project-card slide-in-left"
+                  style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="glass-overlay"></div>
+                  <div className="mobile-project-card-content">
+                    <h2>Portfolio Website</h2>
+                    <p>React, Styled-Components</p>
+                  </div>
+                </div>
+                <div
+                  className="mobile-project-card slide-in-right"
+                  style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="glass-overlay"></div>
+                  <div className="mobile-project-card-content">
+                    <h2>Weather App</h2>
+                    <p>Next.js, API</p>
+                  </div>
+                </div>
+                <div
+                  className="mobile-project-card slide-in-left"
+                  style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="glass-overlay"></div>
+                  <div className="mobile-project-card-content">
+                    <h2>Task Manager</h2>
+                    <p>React, GSAP</p>
+                  </div>
+                </div>
+                <div
+                  className="mobile-project-card slide-in-right"
+                  style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="glass-overlay"></div>
+                  <div className="mobile-project-card-content">
+                    <h2>Blog Platform</h2>
+                    <p>Next.js, Markdown</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mobile-contact-container">
+              <MobileContactCard />
+            </div>
+          </>
+        )}
         <AnimatePresence mode="wait">
           <motion.section
             key="contact"
@@ -328,5 +405,98 @@ const StylishProjectsHeading = styled(motion.h2)`
   @media (max-width: 400px) {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+  }
+`;
+
+// Mobile contact card component
+const MobileContactCard = () => (
+  <StyledWrapper>
+    <div className="card">
+      <h2 className="mobile-contact-title">Contact Me</h2>
+      <div className="input-div">
+        <input type="text" className="input" placeholder="Email" />
+      </div>
+      <div className="input-div">
+        <input className="input" type="text" placeholder="Phone" />
+      </div>
+      <div className="input-div">
+        <input className="input" type="text" placeholder="Message" />
+      </div>
+      <div className="button-div">
+        <button className="submit">Submit</button>
+      </div>
+    </div>
+  </StyledWrapper>
+);
+
+const StyledWrapper = styled.div`
+  .card {
+    height: 20rem;
+    background: transparent;
+    border-top-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border: 1.5px solid rgba(255,255,255,0.13);
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    transition: 0.5s ease-in-out;
+  }
+  .mobile-contact-title {
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  }
+  .card input, .card textarea {
+    color: #fff;
+  }
+  .card input::placeholder, .card textarea::placeholder {
+    color: #e0e0e0;
+    opacity: 1;
+  }
+  .heading {
+    text-align: center;
+    font-weight: 600;
+    padding-top: 1rem;
+    font-size: large;
+  }
+  .input-div {
+    display: flex;
+    margin-top: 1rem;
+    transition: 0.5s ease-in-out;
+  }
+  .card input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 12rem;
+    padding: 8px;
+    outline: none;
+  }
+  .button-div {
+    text-align: center;
+  }
+  .submit {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 8px 3rem;
+    border: none;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: black;
+    color: white;
+    transition: 0.5s ease-in-out;
+    cursor: pointer
+  }
+  .submit:hover {
+    box-shadow: rgba(44, 43, 43, 0.664) 5px 5px, rgba(45, 45, 45, 0.3) 10px 10px, rgba(60, 59, 59, 0.2) 15px 15px, rgba(54, 53, 53, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  }
+  .card input::placeholder {
+    color: black;
+  }
+  .input:focus {
+    transition: 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+  .input:hover {
+    transition: 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   }
 `;
