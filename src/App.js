@@ -89,7 +89,7 @@ function App() {
       <Logo />
       <Navbar />
       <div style={{ position: 'relative', minHeight: '80vh', width: '100%' }}>
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <Hero
             key="hero"
             fade={heroVisible ? 1 : 0}
@@ -124,7 +124,7 @@ function App() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           />
         </AnimatePresence>
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.section
             key="projects"
             as={ProjectsSection}
@@ -296,7 +296,7 @@ function App() {
             </div>
           </>
         )}
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.section
             key="contact"
             initial={{ opacity: 0, y: 60, scale: 0.98 }}
