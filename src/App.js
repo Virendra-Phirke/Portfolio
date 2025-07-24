@@ -435,14 +435,14 @@ const StyledWrapper = styled.div`
     background: transparent;
     border-top-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
-    border: 1.5px solid rgba(255,255,255,0.13);
+    border: 1.5px solid rgb(18, 153, 153);
     padding: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(216, 213, 55, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     transition: 0.5s ease-in-out;
   }
   .mobile-contact-title {
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    text-shadow: 0 2px 8px rgba(0, 255, 187, 0.18);
   }
   .card input, .card textarea {
     color: #fff;
@@ -497,6 +497,6 @@ const StyledWrapper = styled.div`
   }
   .input:hover {
     transition: 0.2s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    box-shadow: rgba(23, 131, 164, 0.81) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   }
 `;

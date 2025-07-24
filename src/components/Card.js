@@ -102,20 +102,8 @@ const StyledWrapper = styled.div`
     border: 1.5px solid #00ff75;
     transform: scale(1.03);
   }
-  .card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    left: -5px;
-    margin: auto;
-    width: 270px;
-    height: 380px;
-    border-radius: 20px;
-    background: linear-gradient(-45deg, rgba(24,24,27,0.22) 0%, rgba(24,24,27,0.28) 100% );
-    z-index: -10;
-    pointer-events: none;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+ 
+  
   .card::after {
     content: "";
     z-index: -1;

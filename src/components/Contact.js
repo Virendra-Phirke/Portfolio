@@ -229,7 +229,7 @@ const StyledWrapper = styled.div`
     -webkit-backdrop-filter: blur(18px) saturate(160%);
     border-left: 5px solid #ff7a01;
     border-radius: 18px;
-    border: 1.5px solid rgba(255,255,255,0.10);
+    border: 1.5px solid rgba(76, 58, 58, 0.1);
     padding: 30px;
     border-left: 5px solid #ff7a01;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
